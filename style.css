@@ -948,7 +948,8 @@ h2 em {
   }
 
   .hero-stamp {
-    right: 4%;
+    right: auto;
+    left: 1.4rem;
     bottom: 3%;
     width: 5rem;
     height: 5rem;
