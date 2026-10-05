@@ -1,0 +1,1056 @@
+/* Soft pastel colors inspired by the Charmz Cakes logo. */
+:root {
+  color-scheme: light;
+  --cream: #fbf9fd;
+  --paper: #fffdfd;
+  --rose: #f2dfea;
+  --rose-deep: #89658a;
+  --lavender: #eee9f7;
+  --aqua: #e2f1f1;
+  --ink: #393342;
+  --muted: #706a78;
+  --line: #e8e1ed;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.filter-options label:focus-visible {
+  outline: 3px solid var(--rose-deep);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.65rem 1rem;
+  transform: translateY(-150%);
+  background: var(--ink);
+  color: white;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  min-height: 5.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem clamp(1.1rem, 5vw, 5rem);
+  border-bottom: 1px solid rgb(57 51 66 / 9%);
+  background: rgb(251 249 253 / 94%);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: 5.2rem;
+  height: 5.2rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.8rem, 2.1vw, 2rem);
+}
+
+.main-nav a {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--rose-deep);
+}
+
+.main-nav .nav-cta {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.main-nav .nav-cta:hover {
+  background: var(--ink);
+  color: white;
+}
+
+.main-nav .nav-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--rose-deep);
+  white-space: nowrap;
+}
+
+.nav-whatsapp svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--rose-deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  line-height: 1.08;
+}
+
+h1 em,
+h2 em {
+  color: var(--rose-deep);
+  font-weight: 400;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-dark {
+  background: var(--ink);
+  color: white;
+}
+
+.button-dark:hover {
+  background: var(--rose-deep);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration-color: var(--rose-deep);
+  text-underline-offset: 0.28rem;
+}
+
+/* The hero pairs the welcome message with a real cake photo from the project. */
+.hero {
+  position: relative;
+  display: grid;
+  min-height: min(44rem, calc(100svh - 5.5rem));
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 8vw, 8rem);
+  background: var(--paper);
+}
+
+.hero-copy {
+  max-width: 34rem;
+  padding-left: clamp(0rem, 3vw, 3rem);
+}
+
+.hero h1 {
+  max-width: 10ch;
+  margin-bottom: 1.45rem;
+  font-size: clamp(3.3rem, 6.7vw, 6.2rem);
+  letter-spacing: -0.055em;
+}
+
+.hero h1 em {
+  display: block;
+}
+
+.hero-intro {
+  max-width: 27rem;
+  margin-bottom: 1.8rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-note {
+  margin: 1.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  max-width: 35rem;
+  height: min(35rem, 72vw);
+  margin: 0;
+}
+
+.hero-image::before {
+  position: absolute;
+  z-index: 0;
+  inset: 1rem -1rem -1rem 1rem;
+  border: 1px solid var(--rose);
+  content: "";
+}
+
+.hero-image img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+}
+
+.hero-image figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.55rem 0.8rem;
+  background: var(--paper);
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.hero-stamp {
+  position: absolute;
+  right: 3.4%;
+  bottom: 9%;
+  display: grid;
+  width: 5.8rem;
+  height: 5.8rem;
+  place-content: center;
+  border: 1px solid var(--rose-deep);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--rose-deep);
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  transform: rotate(9deg);
+}
+
+.section-pad {
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.25rem, 10vw, 10rem);
+}
+
+/* A calm two-column story section. */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(3rem, 9vw, 9rem);
+  background: var(--cream);
+}
+
+.about-photo {
+  position: relative;
+  max-width: 34rem;
+  padding: 0 1.25rem 1.25rem 0;
+}
+
+.about-photo::after {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  height: 72%;
+  background: var(--rose);
+  content: "";
+}
+
+.about-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+}
+
+.photo-caption {
+  position: absolute;
+  z-index: 2;
+  right: -0.3rem;
+  bottom: 1.9rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--paper);
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.about-copy {
+  max-width: 34rem;
+}
+
+.about-copy h2,
+.section-heading h2,
+.contact h2,
+.gallery-cta h2 {
+  margin-bottom: 1.35rem;
+  font-size: clamp(2.5rem, 4.7vw, 4.35rem);
+  letter-spacing: -0.04em;
+}
+
+.about-copy > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.about-copy .text-link {
+  margin-top: 0.75rem;
+}
+
+/* A balanced four-card layout gives each occasion equal space. */
+.services {
+  background: var(--lavender);
+}
+
+.section-heading {
+  max-width: 42rem;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+}
+
+.service-grid {
+  display: grid;
+  max-width: 68rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.service-card {
+  display: flex;
+  min-height: 20rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgb(57 51 66 / 10%);
+  background: var(--paper);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgb(137 101 138 / 45%);
+  box-shadow: 0 1rem 2.5rem rgb(57 51 66 / 8%);
+}
+
+.service-card-top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.service-icon {
+  display: inline-grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border: 1px solid rgb(137 101 138 / 35%);
+  border-radius: 50%;
+  background: var(--rose);
+  color: var(--rose-deep);
+  font-size: 1.4rem;
+  flex: 0 0 auto;
+}
+
+.service-number {
+  margin: 0;
+  color: var(--rose-deep);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.service-number span {
+  padding: 0 0.25rem;
+  color: #a89aaf;
+}
+
+.service-card h3 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  letter-spacing: -0.025em;
+}
+
+.service-card > p:not(.service-number) {
+  max-width: 32rem;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.service-card .text-link {
+  margin-top: auto;
+  font-size: 0.75rem;
+}
+
+/* Contact details use native, labelled form controls for keyboard access. */
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(3rem, 8vw, 8rem);
+  background: var(--paper);
+}
+
+.contact-copy {
+  max-width: 29rem;
+}
+
+.contact-copy > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.contact-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.6rem;
+  font-style: normal;
+}
+
+.contact-details p {
+  display: grid;
+  gap: 0.12rem;
+  margin: 0;
+}
+
+.contact-label {
+  color: var(--rose-deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-details a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  color: var(--ink);
+  font-size: 0.9rem;
+  text-decoration-color: var(--rose-deep);
+  text-underline-offset: 0.25rem;
+}
+
+.contact-details a svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+  color: var(--rose-deep);
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.delivery-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1rem;
+  background: var(--lavender);
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.delivery-note span {
+  flex: 0 0 auto;
+  color: var(--rose-deep);
+}
+
+.contact-aside {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact-aside span {
+  color: var(--rose-deep);
+  font-size: 1.5rem;
+}
+
+.contact-aside p {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.form-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #8b8291;
+}
+
+.contact-form .button {
+  justify-self: start;
+  cursor: pointer;
+}
+
+.form-note {
+  margin: -0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.site-footer {
+  display: flex;
+  min-height: 7rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 5vw, 5rem);
+  background: #5e5368;
+  color: var(--cream);
+}
+
+.site-footer p {
+  margin: 0;
+  color: #e1d6e6;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.site-footer > a:last-child {
+  color: #e5c9e4;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+/* Gallery filters are radio-driven, so category switching works without scripts. */
+.gallery-intro {
+  padding: clamp(3rem, 7vw, 6rem) 1.25rem 2rem;
+  text-align: center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--rose-deep);
+}
+
+.back-link span {
+  margin-right: 0.4rem;
+}
+
+.gallery-intro h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  letter-spacing: -0.05em;
+}
+
+.gallery-intro > p:last-child {
+  max-width: 34rem;
+  margin-right: auto;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.gallery-section {
+  padding: 1.5rem clamp(1.25rem, 7vw, 7rem) 6rem;
+}
+
+.gallery-filters {
+  max-width: 86rem;
+  margin: 0 auto;
+}
+
+.filter-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.filter-options label {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.filter-options label:hover {
+  border-color: var(--rose-deep);
+  color: var(--ink);
+}
+
+#filter-all:checked ~ .filter-options label[for="filter-all"],
+#filter-weddings:checked ~ .filter-options label[for="filter-weddings"],
+#filter-birthdays:checked ~ .filter-options label[for="filter-birthdays"],
+#filter-cookies:checked ~ .filter-options label[for="filter-cookies"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: white;
+}
+
+#filter-all:focus-visible ~ .filter-options label[for="filter-all"],
+#filter-weddings:focus-visible ~ .filter-options label[for="filter-weddings"],
+#filter-birthdays:focus-visible ~ .filter-options label[for="filter-birthdays"],
+#filter-cookies:focus-visible ~ .filter-options label[for="filter-cookies"],
+.filter-options label:focus-visible {
+  outline: 3px solid var(--rose-deep);
+  outline-offset: 4px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem 1.25rem;
+}
+
+.gallery-item {
+  min-width: 0;
+  margin: 0;
+  animation: gallery-appear 240ms ease both;
+}
+
+.gallery-item img,
+.cookie-art {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+  background: var(--rose);
+}
+
+.gallery-item figcaption {
+  display: grid;
+  gap: 0.12rem;
+  padding-top: 0.75rem;
+}
+
+.gallery-item figcaption span {
+  color: var(--rose-deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.gallery-item figcaption strong {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.cookie-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgb(191 161 198 / 25%), transparent 58%),
+    var(--aqua);
+}
+
+.cookie {
+  position: relative;
+  display: block;
+  width: 27%;
+  aspect-ratio: 1;
+  border: 0.45rem solid #c5a5c0;
+  border-radius: 42% 58% 49% 51%;
+  background: #fffafd;
+  box-shadow: 0 0.65rem 1rem rgb(57 51 66 / 14%);
+  transform: rotate(-12deg);
+}
+
+.cookie-two {
+  border-color: #d8aabc;
+  transform: translateY(-1.3rem) rotate(8deg);
+}
+
+.cookie-three {
+  border-color: #9bc9c7;
+  transform: rotate(15deg);
+}
+
+.cookie i {
+  position: absolute;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #a881a4;
+}
+
+.cookie i:nth-child(1) {
+  top: 25%;
+  left: 28%;
+}
+
+.cookie i:nth-child(2) {
+  top: 36%;
+  right: 22%;
+}
+
+.cookie i:nth-child(3) {
+  bottom: 22%;
+  left: 40%;
+}
+
+.cookie i:nth-child(4) {
+  right: 35%;
+  bottom: 12%;
+}
+
+#filter-weddings:checked ~ .gallery-grid .gallery-item:not(.wedding),
+#filter-birthdays:checked ~ .gallery-grid .gallery-item:not(.birthday),
+#filter-cookies:checked ~ .gallery-grid .gallery-item:not(.cookies) {
+  display: none;
+}
+
+.gallery-cta {
+  padding: 4rem 1.25rem 5.5rem;
+  background: var(--rose);
+  text-align: center;
+}
+
+.gallery-cta h2 {
+  margin-bottom: 1.6rem;
+}
+
+@keyframes gallery-appear {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Narrow screens stack content and keep navigation usable without a menu script. */
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 8.5rem;
+  }
+
+  .site-header {
+    min-height: 0;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1rem;
+  }
+
+  .site-header > .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-nav {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.45rem;
+  }
+
+  .main-nav .nav-whatsapp {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 0.15rem;
+  }
+
+  .main-nav a {
+    font-size: 0.73rem;
+  }
+
+  .main-nav .nav-cta {
+    padding: 0.4rem 0.55rem;
+  }
+
+  .hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 4rem 1.4rem 3.5rem;
+  }
+
+  .hero-copy {
+    padding: 0;
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+    font-size: clamp(3.2rem, 13vw, 5rem);
+  }
+
+  .hero-image {
+    width: calc(100% - 1rem);
+    height: min(105vw, 34rem);
+    margin-right: 1rem;
+  }
+
+  .hero-stamp {
+    right: 4%;
+    bottom: 3%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 0.78rem;
+  }
+
+  .section-pad {
+    padding: 4.5rem 1.4rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  .about-photo {
+    width: min(100%, 32rem);
+  }
+
+  .about-copy h2,
+  .section-heading h2,
+  .contact h2,
+  .gallery-cta h2 {
+    font-size: clamp(2.6rem, 10vw, 4rem);
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 0;
+    padding: 1.8rem;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-section {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .site-footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 460px) {
+  .brand-logo {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+
+  .main-nav a {
+    font-size: 0.66rem;
+  }
+
+  .main-nav .nav-cta {
+    padding: 0.35rem 0.45rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 0;
+  }
+
+  .gallery-item img,
+  .cookie-art {
+    aspect-ratio: 4 / 3.8;
+  }
+
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
