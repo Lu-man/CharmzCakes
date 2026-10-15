@@ -141,7 +141,7 @@
         </div>
       </div>
       <div class="contact-form-wrap">
-        <form class="contact-form" action="#" method="get">
+        <form class="contact-form" action="https://formspree.io/f/maeqaelg" method="POST">
           <div class="form-row">
             <div class="form-field">
               <label for="name">Your name</label>
@@ -172,8 +172,9 @@
             <label for="message">A few details</label>
             <textarea id="message" name="message" rows="4" placeholder="Tell us about your ideas, guest count, favorite flavors..."></textarea>
           </div>
+          <div id="form-status" class="form-status" aria-live="polite" hidden></div>
           <button class="button button-dark" type="submit">Send your enquiry <span aria-hidden="true">↗</span></button>
-          <p class="form-note">This template form needs to be connected to an email or form service to receive enquiries.</p>
+          <p class="form-note">We’ll get back to you soon with a quote and next steps.</p>
         </form>
         <a class="contact-social-link" href="https://www.facebook.com/cakesbycharmain2015/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="currentColor"></circle><path d="M13.2 21v-8.2H16l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H6.7v3.2h2.8V21h3.7Z" fill="var(--rose-deep)"></path></svg>See more of our work on Facebook <span aria-hidden="true">↗</span></a>
       </div>
@@ -187,5 +188,58 @@
     <p>Charmz Cakes™ · Based in South Africa · Made with a little extra love.</p>
     <a href="#home">Back to top ↑</a>
   </footer>
+
+  <script>
+    const contactForm = document.querySelector('.contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm && formStatus) {
+      contactForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const button = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = button.innerHTML;
+
+        formStatus.hidden = false;
+        formStatus.classList.remove('success', 'error');
+        formStatus.textContent = 'Sending your enquiry...';
+        button.disabled = true;
+        button.innerHTML = 'Sending...';
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+              Accept: 'application/json'
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Form submission failed');
+          }
+
+          contactForm.reset();
+          formStatus.classList.add('success');
+          formStatus.textContent = 'Thank you! Your enquiry has been sent successfully.';
+        } catch (error) {
+          formStatus.classList.add('error');
+          formStatus.textContent = 'Sorry, something went wrong. Please email charms947@gmail.com or WhatsApp us directly.';
+        } finally {
+          button.disabled = false;
+          button.innerHTML = originalButtonText;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

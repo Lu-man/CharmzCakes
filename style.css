@@ -637,6 +637,27 @@ h2 em {
   cursor: pointer;
 }
 
+.form-status {
+  margin-top: -0.2rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  background: #f7f0f3;
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+
+.form-status.success {
+  border-color: rgba(72, 126, 95, 0.4);
+  background: #edf8f1;
+  color: #234b36;
+}
+
+.form-status.error {
+  border-color: rgba(146, 67, 67, 0.35);
+  background: #fdf0f0;
+  color: #7b2c2c;
+}
+
 .form-note {
   margin: -0.7rem 0 0;
   color: var(--muted);
