@@ -587,6 +587,11 @@ h2 em {
   gap: 1.2rem;
 }
 
+.contact-form-wrap {
+  display: grid;
+  gap: 1.2rem;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -661,6 +666,29 @@ h2 em {
   color: #e5c9e4;
   font-size: 0.75rem;
   text-decoration: none;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  background: var(--rose-deep);
+  color: var(--paper);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-social-link:hover {
+  background: var(--ink);
+}
+
+.contact-social-link svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
 }
 
 /* Gallery filters are radio-driven, so category switching works without scripts. */

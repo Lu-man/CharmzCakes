@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Custom cakes and cookies, lovingly made for weddings, birthdays and life's special gatherings.">
   <title>Charmz Cakes | Sweetest Slice of Paradise</title>
+  <link rel="icon" type="image/png" href="Images/Charmz%20Cakes.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -139,40 +140,43 @@
           <p>Have a date in mind? Sharing it early helps us save a little room in the oven.</p>
         </div>
       </div>
-      <form class="contact-form" action="#" method="get">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="name">Your name</label>
-            <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Alex Morgan" required>
+      <div class="contact-form-wrap">
+        <form class="contact-form" action="#" method="get">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Alex Morgan" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="event-type">What are we celebrating?</label>
+              <select id="event-type" name="event-type" required>
+                <option value="" disabled selected>Choose an occasion</option>
+                <option value="wedding">Wedding</option>
+                <option value="birthday">Birthday</option>
+                <option value="corporate">Corporate event</option>
+                <option value="other">Other special function</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="event-date">Event date</label>
+              <input id="event-date" name="event-date" type="date">
+            </div>
           </div>
           <div class="form-field">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <label for="message">A few details</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your ideas, guest count, favorite flavors..."></textarea>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="event-type">What are we celebrating?</label>
-            <select id="event-type" name="event-type" required>
-              <option value="" disabled selected>Choose an occasion</option>
-              <option value="wedding">Wedding</option>
-              <option value="birthday">Birthday</option>
-              <option value="corporate">Corporate event</option>
-              <option value="other">Other special function</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="event-date">Event date</label>
-            <input id="event-date" name="event-date" type="date">
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="message">A few details</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell us about your ideas, guest count, favorite flavors..."></textarea>
-        </div>
-        <button class="button button-dark" type="submit">Send your enquiry <span aria-hidden="true">↗</span></button>
-        <p class="form-note">This template form needs to be connected to an email or form service to receive enquiries.</p>
-      </form>
+          <button class="button button-dark" type="submit">Send your enquiry <span aria-hidden="true">↗</span></button>
+          <p class="form-note">This template form needs to be connected to an email or form service to receive enquiries.</p>
+        </form>
+        <a class="contact-social-link" href="https://www.facebook.com/cakesbycharmain2015/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="currentColor"></circle><path d="M13.2 21v-8.2H16l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H6.7v3.2h2.8V21h3.7Z" fill="var(--rose-deep)"></path></svg>See more of our work on Facebook <span aria-hidden="true">↗</span></a>
+      </div>
     </section>
   </main>
 
