@@ -29,7 +29,7 @@ showcaseCategories.forEach((category) => {
     const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
     const padding = Number.parseFloat(getComputedStyle(track).paddingLeft) || 0;
     slideStep = originals[0].getBoundingClientRect().width + gap;
-    const copies = Math.ceil((track.clientWidth + slideStep * 2) / (slideStep * originals.length));
+    const copies = Math.ceil((track.clientWidth + slideStep * 2) / (slideStep * originals.length)) + 1;
 
     const makeSet = () => originals.map((item) => {
       const clone = item.cloneNode(true);
@@ -126,7 +126,16 @@ showcaseCategories.forEach((category) => {
     track.addEventListener(type, stopAnimation, { passive: true });
   });
 
-  track.addEventListener('scroll', normalize, { passive: true });
+  // Wrapping mid-swipe interrupts touch momentum and snapping, so only wrap once scrolling has settled.
+  let settleTimer = 0;
+  track.addEventListener('scroll', () => {
+    if (animation) {
+      return;
+    }
+
+    window.clearTimeout(settleTimer);
+    settleTimer = window.setTimeout(normalize, 150);
+  }, { passive: true });
 
   window.addEventListener('resize', () => {
     if (track.clientWidth !== builtWidth) {
