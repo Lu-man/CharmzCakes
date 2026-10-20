@@ -218,6 +218,30 @@ h2 em {
   text-underline-offset: 0.28rem;
 }
 
+html.motion-ready [data-reveal] {
+  opacity: 0;
+  transition: opacity 1000ms ease, transform 1000ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+html.motion-ready [data-reveal="left"] {
+  transform: translateX(calc(-1 * var(--reveal-side-distance, 5rem)));
+}
+
+html.motion-ready [data-reveal="right"] {
+  transform: translateX(var(--reveal-side-distance, 5rem));
+}
+
+html.motion-ready [data-reveal="up"] {
+  transform: translateY(3rem);
+}
+
+html.motion-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+  will-change: auto;
+}
+
 /* The hero pairs the welcome message with a real cake photo from the project. */
 .hero {
   position: relative;
@@ -423,6 +447,27 @@ h2 em {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+html.motion-ready .service-card[data-reveal] {
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.65, 0.3, 1), box-shadow 180ms ease, border-color 180ms ease;
+}
+
+html.motion-ready .service-card[data-reveal]:nth-child(4n + 2) {
+  transition-delay: 80ms;
+}
+
+html.motion-ready .service-card[data-reveal]:nth-child(4n + 3) {
+  transition-delay: 160ms;
+}
+
+html.motion-ready .service-card[data-reveal]:nth-child(4n + 4) {
+  transition-delay: 240ms;
+}
+
+html.motion-ready .service-card[data-reveal]:hover,
+html.motion-ready .service-card[data-reveal]:focus-within {
+  transition-delay: 0ms;
+}
+
 .service-card:hover,
 .service-card:focus-within {
   transform: translateY(-4px);
@@ -592,6 +637,11 @@ h2 em {
   gap: 1.2rem;
 }
 
+.contact-form-links {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -606,6 +656,17 @@ h2 em {
 .form-field label {
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.form-required-note,
+.field-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.required-mark {
+  color: var(--rose-deep);
 }
 
 .form-field input,
@@ -624,6 +685,7 @@ h2 em {
 
 .form-field textarea {
   min-height: 7rem;
+  max-height: 14rem;
   resize: vertical;
 }
 
@@ -683,10 +745,49 @@ h2 em {
   font-style: italic;
 }
 
-.site-footer > a:last-child {
+.footer-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+}
+
+.footer-credit {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-self: center;
+  gap: 0.45rem;
+  color: #f2d5e5;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+.footer-credit:hover {
+  text-decoration: underline;
+}
+
+.footer-credit span {
+  color: #eab5d1;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links a {
   color: #e5c9e4;
   font-size: 0.75rem;
   text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .contact-social-link {
@@ -745,6 +846,116 @@ h2 em {
   margin-right: auto;
   margin-left: auto;
   color: var(--muted);
+}
+
+.showcase-galleries {
+  padding: 1rem 0 5rem;
+}
+
+.showcase-category + .showcase-category {
+  margin-top: 2.5rem;
+}
+
+.showcase-heading {
+  display: flex;
+  max-width: 86rem;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 1.1rem;
+  padding: 0 clamp(1.25rem, 7vw, 7rem);
+}
+
+.showcase-heading .eyebrow {
+  margin-bottom: 0.45rem;
+}
+
+.showcase-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.showcase-category {
+  --slide-width: clamp(16rem, 34vw, 27rem);
+  --track-inset: clamp(1.25rem, 7vw, 7rem);
+}
+
+/* Arrows sit on the photo edges, vertically centred on the images. */
+.showcase-arrow {
+  position: absolute;
+  z-index: 2;
+  top: calc(0.5rem + var(--slide-width) * 0.475);
+  display: grid;
+  width: 3.6rem;
+  height: 3.6rem;
+  place-items: center;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0.5rem 1.4rem rgb(57 51 66 / 35%);
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.showcase-arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.showcase-arrow:hover {
+  background: var(--rose-deep);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.showcase-arrow-prev {
+  left: clamp(0.75rem, 3vw, 3rem);
+}
+
+.showcase-arrow-next {
+  right: clamp(0.75rem, 3vw, 3rem);
+}
+
+.showcase-window {
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-track {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 0.5rem var(--track-inset) 1.25rem;
+  scroll-padding-inline: var(--track-inset);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.showcase-track::-webkit-scrollbar {
+  display: none;
+}
+
+.showcase-track.is-animating {
+  scroll-snap-type: none;
+}
+
+.showcase-track .gallery-item {
+  flex: 0 0 var(--slide-width);
+  scroll-snap-align: start;
+}
+
+.showcase-track .gallery-item img {
+  aspect-ratio: 4 / 3.8;
 }
 
 .gallery-section {
@@ -815,7 +1026,15 @@ h2 em {
 .gallery-item {
   min-width: 0;
   margin: 0;
-  animation: gallery-appear 240ms ease both;
+  overflow: hidden;
+}
+
+.gallery-item:nth-child(3n + 2) {
+  transition-delay: 80ms;
+}
+
+.gallery-item:nth-child(3n) {
+  transition-delay: 160ms;
 }
 
 .gallery-item img,
@@ -824,6 +1043,14 @@ h2 em {
   aspect-ratio: 4 / 4.6;
   object-fit: cover;
   background: var(--rose);
+}
+
+.gallery-item img {
+  transition: transform 500ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.035);
 }
 
 .gallery-item figcaption {
@@ -924,14 +1151,16 @@ h2 em {
   margin-bottom: 1.6rem;
 }
 
-@keyframes gallery-appear {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
+@media (min-width: 761px) and (max-width: 1200px) {
+  .hero-stamp {
+    top: clamp(5.5rem, 12vw, 9rem);
+    bottom: auto;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  html.motion-ready {
+    --reveal-side-distance: clamp(1rem, 6vw, 3rem);
   }
 }
 
@@ -1053,6 +1282,94 @@ h2 em {
   }
 }
 
+@media (min-width: 620px) and (max-width: 760px) {
+  .hero-copy,
+  .about-copy,
+  .contact-copy {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .hero h1,
+  .hero-intro {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-image {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .about-photo {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .about-copy .text-link {
+    justify-content: center;
+  }
+
+  .contact-details {
+    justify-items: center;
+  }
+
+  .delivery-note,
+  .contact-aside {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .contact-form .button,
+  .contact-form-links {
+    justify-self: center;
+  }
+
+  .contact-form-links {
+    justify-content: center;
+  }
+
+  .form-note {
+    text-align: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .showcase-heading {
+    padding-right: 1.4rem;
+    padding-left: 1.4rem;
+  }
+
+  .showcase-category {
+    --slide-width: min(82vw, 25rem);
+    --track-inset: 1.4rem;
+  }
+
+  .showcase-track {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+
+  .showcase-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-galleries {
+    padding-top: 0.25rem;
+  }
+
+  .showcase-category + .showcase-category {
+    margin-top: 1.75rem;
+  }
+}
+
 @media (max-width: 460px) {
   .brand-logo {
     width: 4.4rem;
@@ -1065,10 +1382,6 @@ h2 em {
 
   .main-nav .nav-cta {
     padding: 0.35rem 0.45rem;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
   }
 
   .gallery-grid {
@@ -1102,5 +1415,10 @@ h2 em {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html.motion-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }
