@@ -567,6 +567,12 @@ html.motion-ready .service-card[data-reveal]:focus-within {
   text-transform: uppercase;
 }
 
+.contact-text {
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .contact-details a {
   display: inline-flex;
   align-items: center;
